@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GameplayAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 0
+      compressionQuality: 0
+      maxTextureSize: 0
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 078806b021b02d9408cd4d96138f6aa9, type: 3}
+    - {fileID: 2800000, guid: 3c8b79d89fe78b645902c8fe26f24912, type: 3}
+    - {fileID: 102900000, guid: 7bafb9fd25ef1b24e90d9a5a2b19d59d, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 7c8631b0d9df00241bce72e9efc05d50: 21300000
+    - f8cb23418767bc340bfd64623d816f33: 21300000
+    - 9f401f51f7422d64fb7f7a161fc8dd41: 21300000
+    - ca1cc702f3bf6064999d0b2b4649de6e: 21300000
+    - f6305e1391f422d41afa3a9d1d0e39c7: 21300000
+    - 7967e2641d33be7409da875c04fe7fcd: 21300000
+    - c44ffb1799a734146bfb555a153d8380: 21300000
+    - d4f06e275bcd94f44970496ae4a33047: 21300000
+    - f4891567383e0374dacf5cfad95b0caa: 21300000
+    - 824947088ccea9946a5e8169f17e096e: 21300000
+    - 3c8b79d89fe78b645902c8fe26f24912: 21300000
+    - 84b123a98ac5fa24e97eb943bc6b3f82: 21300000
+    - f4891a2a14a49d24d9764f2c5552792a: 21300000
+    - e4044e8ad37a11b41bfe23f5c251cdba: 21300000
+    - efb1288bdf97e6848ba3ecb7731e5137: 21300000
+    - 396449fb6c908e94ab18b0b458f925fa: 21300000
+    - f3a1ab8c3900ad0408df5e77def3f14c: 21300000
+    - b8b41decb7048ef4b801accb5f9b39d5: 21300000
+    - ca66f30d0a3a23347b8c16a1e2bae36d: 21300000
+    - 4b543efd9698de342a85270e5d339280: 21300000
+    - 248af65fd302e8e438c95d44eaeeaf0e: 21300000
+    - 1e7d8eef2ed005d41a1139d64c825edf: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7c8631b0d9df00241bce72e9efc05d50, type: 3}
+  - {fileID: 21300000, guid: f8cb23418767bc340bfd64623d816f33, type: 3}
+  - {fileID: 21300000, guid: 9f401f51f7422d64fb7f7a161fc8dd41, type: 3}
+  - {fileID: 21300000, guid: ca1cc702f3bf6064999d0b2b4649de6e, type: 3}
+  - {fileID: 21300000, guid: f6305e1391f422d41afa3a9d1d0e39c7, type: 3}
+  - {fileID: 21300000, guid: 7967e2641d33be7409da875c04fe7fcd, type: 3}
+  - {fileID: 21300000, guid: c44ffb1799a734146bfb555a153d8380, type: 3}
+  - {fileID: 21300000, guid: d4f06e275bcd94f44970496ae4a33047, type: 3}
+  - {fileID: 21300000, guid: f4891567383e0374dacf5cfad95b0caa, type: 3}
+  - {fileID: 21300000, guid: 824947088ccea9946a5e8169f17e096e, type: 3}
+  - {fileID: 21300000, guid: 3c8b79d89fe78b645902c8fe26f24912, type: 3}
+  - {fileID: 21300000, guid: 84b123a98ac5fa24e97eb943bc6b3f82, type: 3}
+  - {fileID: 21300000, guid: f4891a2a14a49d24d9764f2c5552792a, type: 3}
+  - {fileID: 21300000, guid: e4044e8ad37a11b41bfe23f5c251cdba, type: 3}
+  - {fileID: 21300000, guid: efb1288bdf97e6848ba3ecb7731e5137, type: 3}
+  - {fileID: 21300000, guid: 396449fb6c908e94ab18b0b458f925fa, type: 3}
+  - {fileID: 21300000, guid: f3a1ab8c3900ad0408df5e77def3f14c, type: 3}
+  - {fileID: 21300000, guid: b8b41decb7048ef4b801accb5f9b39d5, type: 3}
+  - {fileID: 21300000, guid: ca66f30d0a3a23347b8c16a1e2bae36d, type: 3}
+  - {fileID: 21300000, guid: 4b543efd9698de342a85270e5d339280, type: 3}
+  - {fileID: 21300000, guid: 248af65fd302e8e438c95d44eaeeaf0e, type: 3}
+  - {fileID: 21300000, guid: 1e7d8eef2ed005d41a1139d64c825edf, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - cube_06_indigo
+  - cube_07_purple
+  - cube_11_plum
+  - cube_08_gray
+  - cube_17_maroon
+  - cube_10_graphite
+  - cube_05_blue
+  - cube_02_orange
+  - cube_09_brown
+  - cube_15_lavender
+  - white
+  - cube_00_crimson
+  - cube_14_lime
+  - cube_19_violet
+  - cube_13_teal
+  - cube_16_cyan
+  - cube_04_green
+  - cube_12_pink
+  - cube_18_cream
+  - tutorial_hand
+  - cube_03_yellow
+  - cube_01_red
+  m_RenderDataMap: {}
+  m_Tag: GameplayAtlas
+  m_IsVariant: 0

@@ -1,0 +1,19 @@
+{
+  "name": "CubeTower.Editor",
+  "rootNamespace": "CubeTower.Editor",
+  "references": [
+    "CubeTower.Core",
+    "CubeTower.Runtime"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

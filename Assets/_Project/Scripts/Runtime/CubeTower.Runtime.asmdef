@@ -1,0 +1,24 @@
+{
+  "name": "CubeTower.Runtime",
+  "rootNamespace": "CubeTower.Runtime",
+  "references": [
+    "CubeTower.Core",
+    "Zenject",
+    "UniRx",
+    "UniTask",
+    "UniTask.DOTween",
+    "DOTween.Modules",
+    "Unity.TextMeshPro",
+    "Unity.Localization",
+    "Unity.ResourceManager"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
