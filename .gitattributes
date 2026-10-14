@@ -1,0 +1,85 @@
+# Normalize line endings for all text files; keep Unity YAML diffable.
+* text=auto
+
+# ---------------------------------------------------------------------------
+# Code
+# ---------------------------------------------------------------------------
+*.cs        text diff=csharp eol=lf
+*.asmdef    text eol=lf
+*.asmref    text eol=lf
+*.json      text eol=lf
+*.md        text eol=lf
+*.txt       text eol=lf
+*.xml       text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.shader    text eol=lf
+*.hlsl      text eol=lf
+*.cginc     text eol=lf
+*.uss       text eol=lf
+*.uxml      text eol=lf
+.editorconfig  text eol=lf
+.gitignore     text eol=lf
+.gitattributes text eol=lf
+
+# ---------------------------------------------------------------------------
+# Unity YAML (Force Text serialization). Merged with UnityYAMLMerge if configured:
+#   git config merge.unityyamlmerge.driver '"<Unity>/Editor/Data/Tools/UnityYAMLMerge.exe" merge -p %O %B %A %A'
+# ---------------------------------------------------------------------------
+*.meta           text eol=lf merge=unityyamlmerge
+*.unity          text eol=lf merge=unityyamlmerge linguist-generated
+*.prefab         text eol=lf merge=unityyamlmerge linguist-generated
+*.asset          text eol=lf merge=unityyamlmerge linguist-generated
+*.mat            text eol=lf merge=unityyamlmerge linguist-generated
+*.anim           text eol=lf merge=unityyamlmerge linguist-generated
+*.controller     text eol=lf merge=unityyamlmerge linguist-generated
+*.overrideController text eol=lf merge=unityyamlmerge linguist-generated
+*.physicMaterial text eol=lf merge=unityyamlmerge linguist-generated
+*.physicsMaterial2D text eol=lf merge=unityyamlmerge linguist-generated
+*.playable       text eol=lf merge=unityyamlmerge linguist-generated
+*.mask           text eol=lf merge=unityyamlmerge linguist-generated
+*.brush          text eol=lf merge=unityyamlmerge linguist-generated
+*.flare          text eol=lf merge=unityyamlmerge linguist-generated
+*.fontsettings   text eol=lf merge=unityyamlmerge linguist-generated
+*.guiskin        text eol=lf merge=unityyamlmerge linguist-generated
+*.giparams       text eol=lf merge=unityyamlmerge linguist-generated
+*.renderTexture  text eol=lf merge=unityyamlmerge linguist-generated
+*.spriteatlas    text eol=lf merge=unityyamlmerge linguist-generated
+*.terrainlayer   text eol=lf merge=unityyamlmerge linguist-generated
+*.lighting       text eol=lf merge=unityyamlmerge linguist-generated
+*.preset         text eol=lf merge=unityyamlmerge linguist-generated
+
+# ---------------------------------------------------------------------------
+# Binary assets tracked by Git LFS
+# ---------------------------------------------------------------------------
+# Images
+*.png  filter=lfs diff=lfs merge=lfs -text
+*.jpg  filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.psd  filter=lfs diff=lfs merge=lfs -text
+*.tga  filter=lfs diff=lfs merge=lfs -text
+*.tif  filter=lfs diff=lfs merge=lfs -text
+*.tiff filter=lfs diff=lfs merge=lfs -text
+*.exr  filter=lfs diff=lfs merge=lfs -text
+*.hdr  filter=lfs diff=lfs merge=lfs -text
+# Audio
+*.wav  filter=lfs diff=lfs merge=lfs -text
+*.mp3  filter=lfs diff=lfs merge=lfs -text
+*.ogg  filter=lfs diff=lfs merge=lfs -text
+# Fonts
+*.ttf  filter=lfs diff=lfs merge=lfs -text
+*.otf  filter=lfs diff=lfs merge=lfs -text
+# Models
+*.fbx  filter=lfs diff=lfs merge=lfs -text
+*.obj  filter=lfs diff=lfs merge=lfs -text
+# Native / managed binaries
+*.dll  filter=lfs diff=lfs merge=lfs -text
+*.so   filter=lfs diff=lfs merge=lfs -text
+*.a    filter=lfs diff=lfs merge=lfs -text
+*.aar  filter=lfs diff=lfs merge=lfs -text
+*.jar  filter=lfs diff=lfs merge=lfs -text
+*.zip  filter=lfs diff=lfs merge=lfs -text
+
+# Docs media (kept out of LFS so GitHub renders them in README)
+*.gif  binary
+*.mp4  binary
