@@ -1,0 +1,17 @@
+{
+  "name": "CubeTower.Core",
+  "rootNamespace": "CubeTower.Core",
+  "references": [
+    "UniRx",
+    "UniTask"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
