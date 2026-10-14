@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cubeSize: 178
   _drag:
-    _pickAngle: 40
+    _pickAngle: 30
+    _decisionDistanceInches: 0.1
+    _holdToPick: 0.2
     _dragThresholdInches: 0.05
     _pickupScale: 1.1
     _pickupDuration: 0.12
@@ -33,4 +35,18 @@ MonoBehaviour:
   _messages:
     _visibleDuration: 1.8
     _fadeDuration: 0.2
+  _tutorial:
+    _enabled: 1
+    _idleDelay: 5
+    _startDelay: 0.6
+    _fadeDuration: 0.25
+    _pressDuration: 0.2
+    _pressScale: 0.85
+    _holdDuration: 0.2
+    _dragDuration: 0.9
+    _repeatPause: 1
+    _highlightScale: 1.1
+    _tapOffset: 0.3
+    _scrollHintSteps: 1.6
+    _scrollHintDuration: 0.7
   _saveDelay: 0.5

@@ -35,7 +35,8 @@ namespace CubeTower.Runtime.Gameplay.Tower
         private DragLayer _layer;
         private IDisposable _subscription;
         private CubeView _incoming;
-        private bool _initialized;
+        // Not restored by an editor domain reload (recompile while playing), unlike plain private fields.
+        [NonSerialized] private bool _initialized;
 
         public TowerArea Area => new TowerArea(AreaRect.rect.size, _settings.CubeSize);
 
@@ -228,7 +229,7 @@ namespace CubeTower.Runtime.Gameplay.Tower
 
         private void OnRectTransformDimensionsChange()
         {
-            if (!_initialized || !isActiveAndEnabled)
+            if (!_initialized || _tower == null || !isActiveAndEnabled)
                 return;
 
             _targets.Clear();

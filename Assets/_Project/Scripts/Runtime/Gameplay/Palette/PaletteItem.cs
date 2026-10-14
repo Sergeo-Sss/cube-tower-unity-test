@@ -1,7 +1,9 @@
 using CubeTower.Core.Cubes;
+using CubeTower.Core.Gestures;
 using CubeTower.Runtime.Config;
 using CubeTower.Runtime.Gameplay.Cubes;
 using CubeTower.Runtime.Gameplay.Drag;
+using CubeTower.Runtime.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,8 +13,9 @@ namespace CubeTower.Runtime.Gameplay.Palette
 {
     /// <summary>
     /// Infinite source of cubes in the bottom scroll.
-    /// Resolves the scroll vs drag conflict by the direction of the gesture start: a steep gesture picks a cube,
-    /// a flat one is forwarded to the <see cref="ScrollRect"/>. A gesture never does both.
+    /// Resolves the scroll vs drag conflict with <see cref="DragGestureClassifier"/>: the intent is decided
+    /// once (by hold time or by direction over a meaningful distance) and a gesture never does both.
+    /// Until the intent is clear nothing moves - neither the scroll nor a cube.
     /// </summary>
     [RequireComponent(typeof(CubeView))]
     public sealed class PaletteItem : MonoBehaviour, ICubeDragReceiver
@@ -22,8 +25,11 @@ namespace CubeTower.Runtime.Gameplay.Palette
         private DragController _drag;
         private CubeSkinCatalog _skins;
         private GameplaySettings _settings;
+        private DragGestureClassifier _classifier;
         private ScrollRect _scroll;
         private Gesture _gesture;
+        private float _pressTime;
+        private float _heldBeforeMove;
 
         public CubeColorId Color => _cube.Color;
 
@@ -47,6 +53,8 @@ namespace CubeTower.Runtime.Gameplay.Palette
 
         public void OnInitializePotentialDrag(CubeView cube, PointerEventData eventData)
         {
+            _pressTime = Time.unscaledTime;
+
             // Lets the scroll stop its inertia on touch, as it does for its own content.
             if (_scroll != null)
                 _scroll.OnInitializePotentialDrag(eventData);
@@ -54,21 +62,16 @@ namespace CubeTower.Runtime.Gameplay.Palette
 
         public void OnBeginDrag(CubeView cube, PointerEventData eventData)
         {
-            if (IsPickGesture(eventData.position - eventData.pressPosition) && _drag.TryBeginFromPalette(_cube, eventData))
-            {
-                _gesture = Gesture.Cube;
-                if (_scroll != null)
-                    _scroll.StopMovement();
-                return;
-            }
-
-            _gesture = Gesture.Scroll;
-            if (_scroll != null)
-                _scroll.OnBeginDrag(eventData);
+            _heldBeforeMove = Time.unscaledTime - _pressTime;
+            _gesture = Gesture.Undecided;
+            TryDecide(eventData);
         }
 
         public void OnDrag(CubeView cube, PointerEventData eventData)
         {
+            if (_gesture == Gesture.Undecided)
+                TryDecide(eventData);
+
             switch (_gesture)
             {
                 case Gesture.Cube:
@@ -95,20 +98,38 @@ namespace CubeTower.Runtime.Gameplay.Palette
             _gesture = Gesture.None;
         }
 
-        private bool IsPickGesture(Vector2 delta)
+        private void TryDecide(PointerEventData eventData)
         {
-            if (delta.sqrMagnitude <= Mathf.Epsilon)
-                return false;
+            var intent = Classifier.Classify(eventData.position - eventData.pressPosition, _heldBeforeMove);
+            if (intent == DragGesture.Undecided)
+                return;
 
-            var angle = Mathf.Atan2(Mathf.Abs(delta.y), Mathf.Abs(delta.x)) * Mathf.Rad2Deg;
-            return angle >= _settings.Drag.PickAngle;
+            if (intent == DragGesture.PickCube && _drag.TryBeginFromPalette(_cube, eventData))
+            {
+                _gesture = Gesture.Cube;
+                if (_scroll != null)
+                    _scroll.StopMovement();
+                return;
+            }
+
+            // The scroll starts from the current pointer position, so the content doesn't jump.
+            _gesture = Gesture.Scroll;
+            if (_scroll != null)
+                _scroll.OnBeginDrag(eventData);
         }
+
+        // Created lazily: DPI is only reliable at runtime.
+        private DragGestureClassifier Classifier => _classifier ??= new DragGestureClassifier(
+            _settings.Drag.PickAngle,
+            ScreenDpi.InchesToPixels(_settings.Drag.DecisionDistanceInches),
+            _settings.Drag.HoldToPick);
 
         private void Reset() => _cube = GetComponent<CubeView>();
 
         private enum Gesture
         {
             None,
+            Undecided,
             Scroll,
             Cube
         }

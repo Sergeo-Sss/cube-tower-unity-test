@@ -33,7 +33,13 @@ namespace CubeTower.Runtime.Config
     public sealed class DragSettings
     {
         [Tooltip("Min angle of the gesture from the horizontal to pick a cube from the scroll. Flatter gestures scroll.")]
-        [SerializeField, Range(0f, 90f)] private float _pickAngle = 40f;
+        [SerializeField, Range(0f, 90f)] private float _pickAngle = 30f;
+
+        [Tooltip("Physical distance (inches) the finger travels before pick vs scroll is decided by direction.")]
+        [SerializeField, Min(0f)] private float _decisionDistanceInches = 0.1f;
+
+        [Tooltip("Holding a cube this long (seconds) before moving picks it in any direction. 0 disables.")]
+        [SerializeField, Min(0f)] private float _holdToPick = 0.2f;
 
         [Tooltip("Physical distance (inches) a finger must move before a drag starts.")]
         [SerializeField, Min(0f)] private float _dragThresholdInches = 0.05f;
@@ -42,6 +48,8 @@ namespace CubeTower.Runtime.Config
         [SerializeField, Min(0f)] private float _pickupDuration = 0.12f;
 
         public float PickAngle => _pickAngle;
+        public float DecisionDistanceInches => _decisionDistanceInches;
+        public float HoldToPick => _holdToPick;
         public float DragThresholdInches => _dragThresholdInches;
         public float PickupScale => _pickupScale;
         public float PickupDuration => _pickupDuration;

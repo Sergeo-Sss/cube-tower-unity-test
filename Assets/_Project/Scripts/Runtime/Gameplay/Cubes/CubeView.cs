@@ -49,6 +49,11 @@ namespace CubeTower.Runtime.Gameplay.Cubes
         public void SetSize(float size) => RectTransform.sizeDelta = new Vector2(size, size);
 
         /// <summary>
+        /// Extends (negative values) or shrinks the touch area around the visible cube: left, bottom, right, top.
+        /// </summary>
+        public void SetTouchPadding(Vector4 padding) => _image.raycastPadding = padding;
+
+        /// <summary>
         /// Re-parents the cube keeping its on-screen position and anchors it to the bottom-left corner of the parent,
         /// so <see cref="RectTransform.anchoredPosition"/> equals area coordinates.
         /// </summary>

@@ -12,7 +12,6 @@ namespace CubeTower.Runtime.UI
     [RequireComponent(typeof(EventSystem))]
     public sealed class DragThresholdByDpi : MonoBehaviour
     {
-        private const float FallbackDpi = 160f;
         private const int MinThresholdPixels = 5;
 
         private GameplaySettings _settings;
@@ -25,8 +24,7 @@ namespace CubeTower.Runtime.UI
 
         private void Start()
         {
-            var dpi = Screen.dpi > 0f ? Screen.dpi : FallbackDpi;
-            var threshold = Mathf.RoundToInt(_settings.Drag.DragThresholdInches * dpi);
+            var threshold = Mathf.RoundToInt(ScreenDpi.InchesToPixels(_settings.Drag.DragThresholdInches));
             GetComponent<EventSystem>().pixelDragThreshold = Mathf.Max(MinThresholdPixels, threshold);
         }
     }

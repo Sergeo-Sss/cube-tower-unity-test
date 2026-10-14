@@ -66,6 +66,24 @@ namespace CubeTower.Runtime.Gameplay.Palette
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(_content);
             _scrollRect.horizontalNormalizedPosition = 0f;
+            ExtendTouchAreas();
+        }
+
+        /// <summary>
+        /// Gaps between cubes and the free space above / below them belong to the closest cube,
+        /// so a pick gesture started next to a cube still picks it instead of scrolling the panel.
+        /// </summary>
+        private void ExtendTouchAreas()
+        {
+            if (_items.Count == 0)
+                return;
+
+            var cubeRect = ((RectTransform)_items[0].transform).rect;
+            var horizontal = (_layout != null ? _layout.spacing : 0f) * 0.5f;
+            var vertical = Mathf.Max(0f, (Viewport.rect.height - cubeRect.height) * 0.5f);
+            var padding = new Vector4(-horizontal, -vertical, -horizontal, -vertical);
+            foreach (var item in _items)
+                item.Cube.SetTouchPadding(padding);
         }
 
         public Vector3 ContentToWorldVector(Vector2 contentVector) => _content.TransformVector(contentVector);
